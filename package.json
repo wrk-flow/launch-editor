@@ -1,7 +1,7 @@
 {
-  "name": "@umijs/launch-editor",
+  "name": "@rahulakrishna/launch-editor",
   "version": "1.0.1",
-  "description": "launch your code editor using Node.js.",
+  "description": "launch your code editor using Node.js. Fork of umijs one",
   "main": "lib/index.js",
   "scripts": {
     "dev": "npm run build && node test/test.js",

@@ -1,8 +1,8 @@
-/**
- * 探测可能存在的命令 ：
- * 1、指定了编辑器 => 依旧找 map 里的 commands
- * 2、未指定 => 先找进程 =>(找到) => 返回 commands
- *                    => (未找到) => 找安装路径 （除 Windows）
+/* *
+ * Detect possible commands:
+ * 1. The editor is specified => Still find the commands in map
+ * 2. Not specified => Find process first => (find) => return commands
+ * => (Not found) => Find installation path (except Windows)
  */
 import * as fs from 'fs';
 import * as childProcess from 'child_process';
@@ -34,7 +34,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
       return COMMON_EDITORS_OSX.find(item => {
         const { process, location } = item;
         const processBy = process.some(p => {
-          log('guessEditor:output.indexOf(p) > -1', output.indexOf(p) > -1)
+          log('guessEditor:output.indexOf(p) > -1', output.indexOf(p) > -1);
           return output.indexOf(p) > -1;
         });
         if (processBy) {
@@ -47,7 +47,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
           const isExisted = fs.existsSync(loc);
           console.log('loc', loc, isExisted);
           return isExisted;
-        })
+        });
       });
     }
 
@@ -59,7 +59,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
       // Just filter them out upfront. This also saves 10-20ms on the command.
       const output = childProcess
         .execSync(
-          'wmic process where "executablepath is not null" get executablepath',
+          'wmic process where "executablepath is not null" get executablepath'
         )
         .toString();
       const runningProcesses = output.split('\r\n');
@@ -71,7 +71,9 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
       const processEditor = windowsEditorsClone.find((item, i) => {
         const { process, location } = item;
         const processBy = process.some(p => {
-          const findRunning = runningProcesses.find(runProc => runProc.trim().indexOf(p) > -1);
+          const findRunning = runningProcesses.find(
+            runProc => runProc.trim().indexOf(p) > -1
+          );
           log('guessEditor: findRunning', findRunning);
           if (findRunning) {
             windowsEditorsClone[i].commands.unshift(findRunning.trim());
@@ -90,7 +92,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
           const isExisted = fs.existsSync(loc);
           log('guessEditor: loc', loc, isExisted);
           return isExisted;
-        })
+        });
       });
 
       log('guessEditor: after windowsEditorsClone', windowsEditorsClone);
@@ -113,7 +115,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
       return COMMON_EDITORS_LINUX.find(item => {
         const { process, location } = item;
         const processBy = process.some(p => {
-          log('guessEditor: output.indexOf(p) > -1', output.indexOf(p) > -1)
+          log('guessEditor: output.indexOf(p) > -1', output.indexOf(p) > -1);
           return output.indexOf(p) > -1;
         });
         if (processBy) {
@@ -126,7 +128,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
           const isExisted = fs.existsSync(loc);
           log('guessEditor: loc', loc, isExisted);
           return isExisted;
-        })
+        });
       });
     }
   } catch (error) {
@@ -134,5 +136,5 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
     console.error('error', error);
   }
 
-  return undefined
-}
+  return undefined;
+};
