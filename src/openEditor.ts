@@ -69,7 +69,7 @@ const openEditor = async ({
           resolve({
             success: true,
             editorBin: command,
-            message: '成功打开编辑器'
+            message: 'Successfully opened editor'
           });
           break;
         }
@@ -82,7 +82,7 @@ const openEditor = async ({
         success: false,
         editor: name
       },
-      '不能打开编辑器'
+      "Can't open editor"
     );
 
     reject(error);

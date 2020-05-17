@@ -25,4 +25,13 @@ const path = require('path');
   } catch (e) {
     console.error('user error handler 2', e);
   }
+
+  try {
+    const res = await launchEditor(`${path.join(__dirname, 'test.js:8:1')}`, {
+      editor: 'non-existent-editor'
+    });
+    console.log('resresres', res);
+  } catch (e) {
+    console.error('user error handler 2', e);
+  }
 })();

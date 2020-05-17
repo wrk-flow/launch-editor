@@ -15,13 +15,24 @@ const launchEditor = async (
   if (!fs.existsSync(fileName)) {
     return {
       success: false,
-      message: `fileName: ${fileName} not existed`
+      message: `fileName: ${fileName} does not exist`
     };
   }
 
   const aliasEditor = SUPPORTED_EDITTORS[editor];
 
+  // Throwing an error if the user specified editor is not found
+  if (!aliasEditor) {
+    throw new EditorError({
+      editor: editor || 'UNKNOW',
+      success: false,
+      code: ERROR_CODE.UNKNOWN
+    });
+  }
+
   const guessedEditor = guessEditor(aliasEditor);
+
+  // Throwing an error if guessEditor returns undefined
   if (!guessedEditor) {
     throw new EditorError({
       editor: editor || 'UNKNOW',
@@ -30,6 +41,7 @@ const launchEditor = async (
     });
   }
   const { name, commands } = guessedEditor;
+
   log('guessedEditor name', name);
   log('guessedEditor commands', commands);
 

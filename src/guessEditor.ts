@@ -1,8 +1,8 @@
-/**
- * 探测可能存在的命令 ：
- * 1、指定了编辑器 => 依旧找 map 里的 commands
- * 2、未指定 => 先找进程 =>(找到) => 返回 commands
- *                    => (未找到) => 找安装路径 （除 Windows）
+/* *
+ * Detect possible commands:
+ * 1. The editor is specified => Still find the commands in map
+ * 2. Not specified => Find process first => (find) => return commands
+ * => (Not found) => Find installation path (except Windows)
  */
 import * as fs from 'fs';
 import * as childProcess from 'child_process';
@@ -27,13 +27,13 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
   try {
     if (system === 'osx') {
       if (specifiedEditor) {
-        return COMMON_EDITORS_OSX.find((item) => item.name === specifiedEditor);
+        return COMMON_EDITORS_OSX.find(item => item.name === specifiedEditor);
       }
       const output = childProcess.execSync('ps -ax -o comm').toString();
 
-      return COMMON_EDITORS_OSX.find((item) => {
+      return COMMON_EDITORS_OSX.find(item => {
         const { process, location } = item;
-        const processBy = process.some((p) => {
+        const processBy = process.some(p => {
           log('guessEditor:output.indexOf(p) > -1', output.indexOf(p) > -1);
           return output.indexOf(p) > -1;
         });
@@ -43,7 +43,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
         log('guessEditor: use location find');
 
         // via path location
-        return location.some((loc) => {
+        return location.some(loc => {
           const isExisted = fs.existsSync(loc);
           console.log('loc', loc, isExisted);
           return isExisted;
@@ -53,7 +53,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
 
     if (system === 'windows') {
       if (specifiedEditor) {
-        return COMMON_EDITORS_WIN.find((item) => item.name === specifiedEditor);
+        return COMMON_EDITORS_WIN.find(item => item.name === specifiedEditor);
       }
       // Some processes need elevated rights to get its executable path.
       // Just filter them out upfront. This also saves 10-20ms on the command.
@@ -70,9 +70,9 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
       // 通过进程找编辑器
       const processEditor = windowsEditorsClone.find((item, i) => {
         const { process, location } = item;
-        const processBy = process.some((p) => {
+        const processBy = process.some(p => {
           const findRunning = runningProcesses.find(
-            (runProc) => runProc.trim().indexOf(p) > -1
+            runProc => runProc.trim().indexOf(p) > -1
           );
           log('guessEditor: findRunning', findRunning);
           if (findRunning) {
@@ -88,7 +88,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
         log('guessEditor: use location find');
 
         // via path location
-        return location.some((loc) => {
+        return location.some(loc => {
           const isExisted = fs.existsSync(loc);
           log('guessEditor: loc', loc, isExisted);
           return isExisted;
@@ -103,9 +103,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
 
     if (system === 'linux') {
       if (specifiedEditor) {
-        return COMMON_EDITORS_LINUX.find(
-          (item) => item.name === specifiedEditor
-        );
+        return COMMON_EDITORS_LINUX.find(item => item.name === specifiedEditor);
       }
       // --no-heading No header line
       // x List all processes owned by you
@@ -114,9 +112,9 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
         .execSync('ps x --no-heading -o comm --sort=comm')
         .toString();
 
-      return COMMON_EDITORS_LINUX.find((item) => {
+      return COMMON_EDITORS_LINUX.find(item => {
         const { process, location } = item;
-        const processBy = process.some((p) => {
+        const processBy = process.some(p => {
           log('guessEditor: output.indexOf(p) > -1', output.indexOf(p) > -1);
           return output.indexOf(p) > -1;
         });
@@ -126,7 +124,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
         log('guessEditor: use location find');
 
         // via path location
-        return location.some((loc) => {
+        return location.some(loc => {
           const isExisted = fs.existsSync(loc);
           log('guessEditor: loc', loc, isExisted);
           return isExisted;
