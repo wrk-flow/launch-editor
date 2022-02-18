@@ -1,7 +1,7 @@
 {
-  "name": "@rahulakrishna/launch-editor",
+  "name": "@wrkflow/launch-editor",
   "version": "1.1.0",
-  "description": "launch your code editor using Node.js. Fork of umijs one",
+  "description": "launch your code editor using Node.js. Fork of umijs and rahulakrishna one",
   "main": "lib/index.js",
   "scripts": {
     "dev": "npm run build && node test/test.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/umijs/launch-editor.git"
+    "url": "git+https://github.com/wrk-flow/launch-editor"
   },
   "keywords": [
     "editor",
@@ -24,28 +24,26 @@
     "email": "45808948@qq.com"
   },
   "bugs": {
-    "url": "https://github.com/umijs/launch-editor/issues"
+    "url": "https://github.com/wrk-flow/launch-editor/issues"
   },
-  "homepage": "https://github.com/umijs/launch-editor#readme",
+  "homepage": "https://github.com/wrk-flow/launch-editor#readme",
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.3",
-    "@umijs/fabric": "^1.1.10",
-    "concurrently": "^4.1.2",
-    "coverage": "^0.4.0",
-    "nodemon": "^1.19.2",
-    "np": "^5.0.1",
-    "typescript": "^3.6.2",
-    "umi-test": "^1.7.1"
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.18",
+    "@umijs/fabric": "^2.10.1",
+    "concurrently": "^7.0.0",
+    "coverage": "^0.4.1",
+    "nodemon": "^2.0.15",
+    "np": "^7.6.0",
+    "typescript": "^4.5.5",
+    "umi-test": "^1.9.6"
   },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "cross-spawn": "^7.0.0",
-    "debug": "^4.1.1",
-    "user-home": "^2.0.0"
+    "cross-spawn": "^7.0.3",
+    "debug": "^4.3.3"
   }
 }

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { parseFile, log } from './utils';
+import { parseFile, logToDebug } from './utils';
 import guessEditor from './guessEditor';
 import openEditor from './openEditor';
 import EditorError from './error';
@@ -10,7 +10,12 @@ const launchEditor = async (
   file: string,
   options: IOptions = {}
 ): Promise<IResult> => {
-  const { editor } = options;
+  if (typeof options.log === 'undefined') {
+    options.log = logToDebug
+  }
+
+  const { editor, log } = options;
+
   const { fileName, lineNumber, colNumber } = parseFile(file);
   if (!fs.existsSync(fileName)) {
     return {
@@ -30,7 +35,7 @@ const launchEditor = async (
     });
   }
 
-  const guessedEditor = guessEditor(aliasEditor);
+  const guessedEditor = guessEditor(aliasEditor, log);
 
   // Throwing an error if guessEditor returns undefined
   if (!guessedEditor) {
@@ -48,12 +53,14 @@ const launchEditor = async (
   const params = {
     fileName,
     lineNumber,
-    colNumber
+    colNumber,
+    stdout: options.stdout || 'inherit',
   };
 
   const res = await openEditor({
     name,
     commands,
+    log,
     ...params
   });
 

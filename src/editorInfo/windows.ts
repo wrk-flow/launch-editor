@@ -53,5 +53,12 @@ export default [
     location: [],
     commands: ['webstorm', 'wstorm'],
     opts: []
+  },
+  {
+    name: 'phpstorm',
+    process: ['phpstorm.exe', 'phpstorm64.exe'],
+    location: [],
+    commands: ['phpstorm'],
+    opts: []
   }
 ];

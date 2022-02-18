@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as userHome from 'user-home';
+import { homedir } from 'os';
 
 export default [
   {
@@ -7,7 +7,7 @@ export default [
     process: ['Visual Studio Code.app'],
     location: [
       path.join('/', 'Applications', 'Visual Studio Code.app'),
-      path.join(userHome, '.vscode')
+      path.join(homedir(), '.vscode')
     ],
     commands: [
       'code',
@@ -71,5 +71,14 @@ export default [
       '/Applications/IntelliJ IDEA.app/Contents/MacOS/idea',
       'wstorm'
     ]
-  }
+  },
+  {
+    name: 'phpstorm',
+    process: ['PhpStorm.app'],
+    location: [path.join('/', 'Applications', 'PhpStorm.app')],
+    commands: [
+      'phpstorm',
+      '/Applications/PhpStorm.app/Contents/MacOS/phpstorm'
+    ]
+  },
 ];

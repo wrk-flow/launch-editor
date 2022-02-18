@@ -1,5 +1,7 @@
 import * as path from 'path';
-import * as userHome from 'user-home';
+import * as os from 'os';
+
+const userHome = os.homedir();
 
 export default [
   {
@@ -33,5 +35,11 @@ export default [
     process: ['webstorm', 'webstorm.sh'],
     location: [],
     commands: ['wstorm', 'webstorm']
+  },
+  {
+    name: 'phpstorm',
+    process: ['phpstorm', 'phpstorm.sh'],
+    location: [],
+    commands: ['phpstorm']
   }
 ];

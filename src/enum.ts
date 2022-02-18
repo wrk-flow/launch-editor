@@ -10,7 +10,8 @@ export enum SUPPORTED_EDITTORS {
   'sublime' = 'subl',
   'atom' = 'atom',
   'webstorm' = 'webstorm',
-  'idea' = 'idea'
+  'idea' = 'idea',
+  'phpstorm' = 'phpstorm',
 }
 
 export type IEditor = keyof typeof SUPPORTED_EDITTORS;

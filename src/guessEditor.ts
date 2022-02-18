@@ -9,16 +9,17 @@ import * as childProcess from 'child_process';
 import COMMON_EDITORS_OSX from './editorInfo/osx';
 import COMMON_EDITORS_LINUX from './editorInfo/linux';
 import COMMON_EDITORS_WIN from './editorInfo/windows';
-import { getOS, log } from './utils';
+import { getOS } from './utils';
+import {Log} from "./types";
 // import { IEditor } from './enum';
 
-export interface IGuessEdiotr {
+export interface IGGuessEditor {
   commands: string[];
   name: string;
   opts?: string[];
 }
 
-export default (specifiedEditor): IGuessEdiotr | undefined => {
+export default (specifiedEditor: string, log: Log): IGGuessEditor | undefined => {
   const system = getOS();
 
   // We can find out which editor is currently running by:
@@ -45,7 +46,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
         // via path location
         return location.some(loc => {
           const isExisted = fs.existsSync(loc);
-          console.log('loc', loc, isExisted);
+          log('loc', loc, isExisted);
           return isExisted;
         });
       });
@@ -133,7 +134,7 @@ export default (specifiedEditor): IGuessEdiotr | undefined => {
     }
   } catch (error) {
     // Ignore...
-    console.error('error', error);
+    log('error', error);
   }
 
   return undefined;

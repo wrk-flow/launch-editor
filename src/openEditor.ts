@@ -2,7 +2,7 @@ import * as childProcess from 'child_process';
 import * as path from 'path';
 import { ERROR_CODE } from './enum';
 import EditorError from './error';
-import { isWSL, getOS, log } from './utils';
+import { isWSL, getOS } from './utils';
 
 import getArgs from './getArgs';
 
@@ -22,7 +22,9 @@ const openEditor = async ({
   args = [],
   fileName,
   lineNumber,
-  colNumber
+  colNumber,
+  stdout,
+  log
 }) => {
   return new Promise((resolve, reject) => {
     if (!commands.length) {
@@ -31,7 +33,7 @@ const openEditor = async ({
           editor: name,
           code: ERROR_CODE.UNKNOWN
         },
-        'no editor avalibe'
+        'no editor available'
       );
       reject(error);
     }
@@ -58,11 +60,11 @@ const openEditor = async ({
           _childProcess = childProcess.spawnSync(
             'cmd.exe',
             ['/C', command].concat(args),
-            { stdio: 'inherit' }
+            { stdio: stdout }
           );
         } else {
           _childProcess = childProcess.spawnSync(command, args, {
-            stdio: 'inherit'
+            stdio: stdout
           });
         }
         if (_childProcess && _childProcess.status !== null) {

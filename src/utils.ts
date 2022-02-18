@@ -2,9 +2,9 @@ import * as os from 'os';
 import debug from 'debug';
 import { SYSTEMS } from './enum';
 
-export const log = (...args) => {
+export const logToDebug = (...args) => {
   // @ts-ignore
-  return debug('umi-editor')(...args);
+  return debug('launch-editor')(...args);
 };
 
 export const getOS = (): SYSTEMS => {
