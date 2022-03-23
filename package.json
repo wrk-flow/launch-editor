@@ -1,6 +1,6 @@
 {
   "name": "@wrkflow/launch-editor",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "launch your code editor using Node.js. Fork of umijs and rahulakrishna one",
   "main": "lib/index.js",
   "scripts": {
