@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run build && node test/test.js",
     "prepublishOnly": "npm run build && npm run test && np --no-cleanup --yolo --no-publish",
-    "release": "np",
+    "release": "np —no-yarn",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "build": "tsc",
     "test": "umi-test --coverage"

@@ -1,9 +1,9 @@
 # launch-editor FORK
 
-> This is currently a internally maintained FORK because maintainer of @umijs/launch-editor has not merged in fixes / improvments.
+> This is currently a internally maintained FORK because maintainer of @wrkflow/launch-editor has not merged in fixes / improvments.
 
 ✏️ Launch your code editor using Node.js.
-
+📰 Changelog is created in [GitHub releases](https://github.com/wrk-flow/launch-editor/releases)
 
 ## Feature
 - [x] support `async/await`
@@ -15,7 +15,7 @@
 ## Install
 
 ```sh
-$ npm install @umijs/launch-editor -S
+$ npm install @wrkflow/launch-editor -S
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ $ npm install @umijs/launch-editor -S
 Commonjs
 
 ```js
-const launchEditor = require('@umijs/launch-editor');
+const launchEditor = require('@wrkflow/launch-editor');
 
 (async () => {
   try {
@@ -36,7 +36,7 @@ const launchEditor = require('@umijs/launch-editor');
 ES6 / TypeScript
 
 ```js
-import launchEditor from '@umijs/launch-editor';
+import launchEditor from '@wrkflow/launch-editor';
 
 (async () => {
   try {
@@ -83,7 +83,7 @@ guess how many editors you have in current system.
 Commonjs
 
 ```ts
-const { getEditors }  = require('@umijs/launch-editor');
+const { getEditors }  = require('@wrkflow/launch-editor');
 
 guessEditor();
 

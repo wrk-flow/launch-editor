@@ -1,0 +1,11 @@
+.github
+.prettierrc
+.eslintignore
+.eslintrc.js
+.idea/
+.prettierrc
+.travis.yml
+src/
+test/
+tsconfig.json
+typings.d.ts
