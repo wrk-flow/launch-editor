@@ -19,10 +19,16 @@
     "launch",
     "nodejs"
   ],
-  "authors": {
-    "name": "ycjcl868",
-    "email": "45808948@qq.com"
-  },
+  "authors": [
+    {
+      "name": "ycjcl868",
+      "email": "45808948@qq.com"
+    },
+    {
+      "name": "Martin Kluska",
+      "email": "martin@kluska.cz"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/wrk-flow/launch-editor/issues"
   },

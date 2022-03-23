@@ -1,8 +1,9 @@
-# launch-editor
+# launch-editor FORK
 
-[![Coverage Status](https://coveralls.io/repos/github/umijs/launch-editor/badge.svg?branch=master)](https://coveralls.io/github/umijs/launch-editor?branch=master) [![NPM version](https://img.shields.io/npm/v/@umijs/launch-editor.svg?style=flat)](https://npmjs.org/package/@umijs/launch-editor) [![NPM downloads](http://img.shields.io/npm/dm/@umijs/launch-editor.svg?style=flat)](https://npmjs.org/package/@umijs/launch-editor)
+> This is currently a internally maintained FORK because maintainer of @umijs/launch-editor has not merged in fixes / improvments.
 
 ✏️ Launch your code editor using Node.js.
+
 
 ## Feature
 - [x] support `async/await`
@@ -115,11 +116,17 @@ $ npm run test
 
 ### Supported editors
 
-| Value | Editor | Linux | Windows | OSX |
-|--------|------|:------:|:------:|:------:|
-| `code` | [Visual Studio Code](https://code.visualstudio.com/) |✓|✓|✓|
-| `atom` | [Atom](https://atom.io/) |✓||✓|
+| Value           | Editor                                                                 | Linux | Windows | OSX |
+|-----------------|------------------------------------------------------------------------|:------:|:------:|:------:|
+| `code`          | [Visual Studio Code](https://code.visualstudio.com/)                   |✓|✓|✓|
+| `atom`          | [Atom](https://atom.io/)                                               |✓||✓|
 | `code-insiders` | [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) |✓|✓|✓|
-| `sublime` | [Sublime Text](https://www.sublimetext.com/) |✓|✓|✓|
-| `webstorm` | [WebStorm](https://www.jetbrains.com/webstorm/) |✓|✓|✓|
-| `idea` | [IDEA](https://www.jetbrains.com/idea/) |✓||✓|
+| `sublime`       | [Sublime Text](https://www.sublimetext.com/)                           |✓|✓|✓|
+| `webstorm`      | [WebStorm](https://www.jetbrains.com/webstorm/)                        |✓|✓|✓|
+| `phpstorm`      | [PHPStorm](https://www.jetbrains.com/phpstorm/)                        |✓|✓|✓|
+| `idea`          | [IDEA](https://www.jetbrains.com/idea/)                                |✓||✓|
+
+
+##
+
+Fork of umijs and rahulakrishna.
